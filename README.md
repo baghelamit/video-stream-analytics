@@ -1,6 +1,6 @@
 # Video Stream Analytics
 
-Below is the architecture diagram for Video Stream Analytics application.
+Below is the architecture diagram for Video Stream Analytics application. Read the article at [InfoQ](https://www.infoq.com/articles/video-stream-analytics-opencv)
 
 ![Video Stream Analytics Architecture](https://github.com/baghelamit/video-stream-analytics/blob/master/architecture.png)
 
