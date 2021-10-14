@@ -1,22 +1,22 @@
 package com.iot.video.app.kafka.collector;
 
-import java.sql.Timestamp;
-import java.util.Base64;
-
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.apache.commons.lang.StringUtils;
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.log4j.Logger;
-import org.opencv.core.Core;
+import org.bytedeco.javacpp.Loader;
+import org.bytedeco.opencv.opencv_java;
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.videoio.VideoCapture;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import java.sql.Timestamp;
+import java.util.Base64;
 
 /**
  * Class to convert Video Frame into byte array and generate JSON event using Kafka Producer.
@@ -40,7 +40,7 @@ public class VideoEventGenerator implements Runnable {
 	
 	//load OpenCV native lib
 	static {
-		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+		Loader.load(opencv_java.class);
 	}
 
 	@Override
