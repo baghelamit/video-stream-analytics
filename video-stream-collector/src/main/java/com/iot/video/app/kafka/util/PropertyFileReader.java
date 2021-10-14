@@ -17,16 +17,11 @@ public class PropertyFileReader {
 	private static Properties prop = new Properties();
 	public static Properties readPropertyFile() throws Exception {
 		if (prop.isEmpty()) {
-			InputStream input = PropertyFileReader.class.getClassLoader().getResourceAsStream("stream-collector.properties");
-			try {
+			try (InputStream input = PropertyFileReader.class.getClassLoader().getResourceAsStream("stream-collector.properties")) {
 				prop.load(input);
 			} catch (IOException ex) {
 				logger.error(ex);
 				throw ex;
-			} finally {
-				if (input != null) {
-					input.close();
-				}
 			}
 		}
 		return prop;

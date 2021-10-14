@@ -8,6 +8,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.bytedeco.javacpp.Loader;
+import org.bytedeco.opencv.opencv_java;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
@@ -32,7 +34,7 @@ public class VideoMotionDetector implements Serializable {
 	
 	//load native lib
 	static {
-		 System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+		Loader.load(opencv_java.class);
 	}
 	
 	/**
